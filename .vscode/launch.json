@@ -1,0 +1,1437 @@
+{
+   "configurations": [
+      {
+         "name": "Start employee_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfo-tile"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect"
+         }
+      },
+      {
+         "name": "Start employee_info with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect"
+         }
+      },
+      {
+         "name": "Start employee_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfo-tile"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {}
+      },
+      {
+         "name": "Start employee_info Mock with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229
+      },
+      {
+         "name": "Start employee_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfo-tile"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {}
+      },
+      {
+         "name": "Start employee_info_free",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_info_free",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfofree-display"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect"
+         }
+      },
+      {
+         "name": "Start employee_info_free with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_info_free",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfofree-display",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect"
+         }
+      },
+      {
+         "name": "Start employee_info_free Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info_free",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfofree-display"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {}
+      },
+      {
+         "name": "Start employee_info_free Mock with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info_free",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfofree-display",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229
+      },
+      {
+         "name": "Start employee_info_free Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info_free",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html?sap-ui-xx-viewCache=false#employeeinfofree-display"
+         ],
+         "console": "integratedTerminal",
+         "internalConsoleOptions": "neverOpen",
+         "port": 9229,
+         "env": {}
+      },
+      {
+         "name": "Start aptment_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#aptmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#aptmentinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#aptmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info Mock with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#aptmentinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#aptmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#zaptaptmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#zaptaptmentinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#zaptaptmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info Mock with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#zaptaptmentinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#zaptaptmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start appment_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/appment_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#appmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start appment_info with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/appment_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#appmentinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start appment_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/appment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#appmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start appment_info Mock with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/appment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#appmentinfo-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start appment_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/appment_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#appmentinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info2",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/aptment_info2",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#aptmentinfo2-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info2 with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/aptment_info2",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#aptmentinfo2-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info2 Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info2",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#aptmentinfo2-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info2 Mock with UI5 Version",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info2",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#aptmentinfo2-tile",
+            "${input:UI5MinVersion1.65.0}"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start aptment_info2 Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/aptment_info2",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#aptmentinfo2-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#employeeinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#employeeinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#employeeinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start apt_trade",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/apt_trade",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#apttrade-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start apt_trade Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/apt_trade",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#apttrade-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start apt_trade Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/apt_trade",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#apttrade-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start flight_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/flight_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#flightinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start flight_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/flight_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#flightinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start flight_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/flight_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#flightinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start booking_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/booking_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#bookinginfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start booking_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/booking_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#bookinginfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start booking_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/booking_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#bookinginfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start ovp__order",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/ovp__order",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#ovporder-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start ovp__order Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/ovp__order",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#ovporder-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start ovp__order Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/ovp__order",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#ovporder-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_manage",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_manage",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#employeemanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_manage Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#employeemanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_manage Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#employeemanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start orgeh_manage",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/orgeh_manage",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#orgehmanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start orgeh_manage Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/orgeh_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#orgehmanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start orgeh_manage Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/orgeh_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#orgehmanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_basic_info",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/employee_basic_info",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#employeebasicinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_basic_info Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_basic_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#employeebasicinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start employee_basic_info Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/employee_basic_info",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#employeebasicinfo-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      }
+   ],
+   "compounds": [],
+   "inputs": [
+      {
+         "id": "UI5MinVersion1.65.0",
+         "type": "command",
+         "command": "sap.ux.appGenerator.ui5Version",
+         "args": {
+            "minUI5Version": "1.65.0"
+         }
+      }
+   ]
+}

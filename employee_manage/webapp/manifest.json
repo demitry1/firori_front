@@ -1,0 +1,402 @@
+{
+    "_version": "1.17.0",
+    "sap.app": {
+        "id": "employeemanage",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap-ux/fiori-elements-writer:ovp",
+            "version": "0.3.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZHRS_OV_EMPLOYEE/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [
+                        "ZHRS_OV_EMPLOYEE_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZHRS_OV_EMPLOYEE_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZHRS_OV_EMPLOYEE_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZHRS_OV_EMPLOYEE_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.71.19",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "employeemanage.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "ActionType",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "showBasicSearch": true,
+        "showDateInRelativeFormat": false,
+        "cards": {
+            "action01": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.linklist",
+                "settings": {
+                    "title": "인사정보 바로가기",
+                    "subTitle": "",
+                    "listFlavor": "standard",
+                    "targetUri": "",
+                    "defaultSpan": {
+                        "rows": 26,
+                        "cols": 1
+                    },
+                    "staticContent": [
+                        {
+                            "title": "조직관리 ",
+                            "imageUri": "sap-icon://org-chart",
+                            "imageAltText": "조직도 관리",
+                            "targetUri": "https://vhcala4hci:50001/sap/bc/ui2/flp#OrgehManage-display",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "사원기본정보",
+                            "imageUri": "sap-icon://employee-lookup",
+                            "imageAltText": "사원기본정보 관리",
+                            "targetUri": "https://vhcala4hci:50001/sap/bc/ui2/flp#EmpBasicInfo-display",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "발령정보 ",
+                            "imageUri": "sap-icon://action",
+                            "imageAltText": "발령정보 조회",
+                            "targetUri": "https://sap.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "휴무쿼터",
+                            "imageUri": "sap-icon://pie-chart",
+                            "imageAltText": "휴무쿼터 조회",
+                            "targetUri": "https://sap.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "휴가신청",
+                            "imageUri": "sap-icon://travel-itinerary",
+                            "imageAltText": "Manage Purchase Requisitions",
+                            "targetUri": "https://sap.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "어학정보",
+                            "imageUri": "sap-icon://marketing-campaign",
+                            "imageAltText": "어학정보 조회",
+                            "targetUri": "https://sap.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "학력정보",
+                            "imageUri": "sap-icon://study-leave",
+                            "imageAltText": "학력정보 조회",
+                            "targetUri": "https://sap.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "자격증정보",
+                            "imageUri": "sap-icon://business-by-design",
+                            "imageAltText": "자격증정보 조회",
+                            "targetUri": "https://sap.com",
+                            "openInNewWindow": true
+                        }
+                    ]
+                }
+            },
+            "action02": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.list",
+                "settings": {
+                    "title": "발령",
+                    "category": "Action",
+                    "subTitle": "Personal Action History",
+                    "entitySet": "Action",
+                    "sortOrder": "descending",
+                    "sortBy": "Begda",
+                    "tabs": [
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ActionQF",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ActionHeader",
+                            "value": "발령정보"
+                        },
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ActionQF2",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ActionHeader",
+                            "value": "소속정보"
+                        },
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ActionQF3",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ActionHeader",
+                            "value": "직급정보"
+                        }
+                    ],
+                    "defaultSpan": {
+                        "rows": 3,
+                        "cols": 1
+                    }
+                }
+            },
+            "action03": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.list",
+                "settings": {
+                    "title": "휴무쿼터",
+                    "category": "Quota",
+                    "subTitle": "Personal Yearly Leave Usage",
+                    "listType": "extended",
+                    "listFlavor": "bar",
+                    "sortOrder": "descending",
+                    "sortBy": "QuotaType",
+                    "valueSelectionInfo": "전체평균 사용율",
+                    "tabs": [
+                        {
+                            "entitySet": "Quota_21",
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#header",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ActionHeader",
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                            "value": "연차휴가"
+                        },
+                        {
+                            "entitySet": "Quota_22",
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#header",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ActionHeader",
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                            "value": "연차휴가(이월)"
+                        },
+                        {
+                            "entitySet": "Quota_31",
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#header",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ActionHeader",
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                            "value": "경조휴가"
+                        }
+                    ]
+                }
+            },
+            "action04": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.table",
+                "settings": {
+                    "title": "휴무내역",
+                    "entitySet": "Leave",
+                    "category": "Leave",
+                    "listType": "extended",
+                    "listFlavor": "standard",
+                    "sortOrder": "descending",
+                    "sortBy": "Begda",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+                }
+            },
+            "action05": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "어학",
+                    "subTitle": "Language Sum",
+                    "entitySet": "Lang_Sum",
+                    "valueSelectionInfo": "1234",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#top5Changed",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#langChart"
+                }
+            },
+            "action06": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "학력통계",
+                    "entitySet": "School_Sum",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#SchoolTypeNm",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart"
+                }
+            },
+            "action07": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.list",
+                "settings": {
+                    "title": "사원정보",
+                    "category": "Employee",
+                    "subTitle": "Employee Infomation",
+                    "entitySet": "Employee",
+                    "sortOrder": "ascending",
+                    "sortBy": "Pernr",
+                    "listType": "condensed",
+                    "imageSupported": true,
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "defaultSpan": {
+                        "rows": 7,
+                        "cols": 1
+                    }
+                }
+            },
+            "actiona00": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.linklist",
+                "settings": {
+                    "title": "연락처",
+                    "subTitle": "",
+                    "listFlavor": "carousel",
+                    "targetUri": "https://en.wikipedia.org/wiki/Mangalyaan_2",
+                    "entitySet": "Employee",
+                    "defaultSpan": {
+                        "rows": 35,
+                        "cols": 1
+                    }
+                }
+            },
+            "action09": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.stack",
+                "settings": {
+                    "title": "휴무 승인",
+                    "subTitle": "Leave to Approve",
+                    "entitySet": "Leave02",
+                    "objectStreamCardsSettings": {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.Facets#stack"
+                    },
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#header,com.sap.vocabularies.UI.v1.Identification#card"
+                }
+            },
+            "action10": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "자격통계",
+                    "entitySet": "Cert_Sum",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#header",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart"
+                }
+            },
+            "action21": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.list",
+                "settings": {
+                    "title": "최근 어학성적",
+                    "category": "Lang",
+                    "subTitle": "",
+                    "listType": "extended",
+                    "entitySet": "Lang",
+                    "sortOrder": "ascending",
+                    "sortBy": "Pernr",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "defaultSpan": {
+                        "rows": 3,
+                        "cols": 1
+                    }
+                }
+            },
+            "action22": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "처별 인원현황",
+                    "entitySet": "EmpSum",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#header",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart"
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    },
+    "sap.ui.generic.app": {
+        "settings": {}
+    }
+}

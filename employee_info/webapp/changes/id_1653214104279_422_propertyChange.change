@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1653214104279_422_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "employeeinfo",
+    "packageName": "",
+    "content": {
+        "property": "enableAutoBinding",
+        "newValue": true
+    },
+    "selector": {
+        "id": "employeeinfo::sap.suite.ui.generic.template.ListReport.view.ListReport::Employee--listReport",
+        "idIsLocal": false,
+        "type": "sap.ui.comp.smarttable.SmartTable"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/employeeinfo/changes/",
+    "projectId": "",
+    "creation": 1653214104279,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.71.19",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

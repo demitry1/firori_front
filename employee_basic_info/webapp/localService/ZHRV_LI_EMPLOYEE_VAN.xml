@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zhrv_li_employee/$metadata">
+        <edmx:Include Namespace="ZHRV_LI_EMPLOYEE" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zhrv_li_employee_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/EmgrdNm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/EmposNm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/EmgrpNm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/EmpStatusNm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/Aedtm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/Uname">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType/Pernr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrv_li_employee.EmployeeType">
+                <Annotation Term="UI.DataPoint" Qualifier="EmgrdData">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Emgrd"/>
+                        <PropertyValue Property="Title" String="직급"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="EmposData">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Empos"/>
+                        <PropertyValue Property="Title" String="직위"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="기본사항"/>
+                            <PropertyValue Property="ID" String="gibon"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String=""/>
+                                        <PropertyValue Property="ID" String="gibonInfo"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#gibon"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="조직"/>
+                            <PropertyValue Property="ID" String="orgeh"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String=""/>
+                                        <PropertyValue Property="ID" String="orgehInfo"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#orgeh"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="근무지"/>
+                            <PropertyValue Property="ID" String="place"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String=""/>
+                                        <PropertyValue Property="ID" String="placeInfo"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#place"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="emgrddata"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#EmgrdData"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="emposdata"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#EmposData"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="gibon">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="사원번호"/>
+                                    <PropertyValue Property="Value" Path="Pernr"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="이름"/>
+                                    <PropertyValue Property="Value" Path="Ename"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="직급"/>
+                                    <PropertyValue Property="Value" Path="Emgrd"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="직위"/>
+                                    <PropertyValue Property="Value" Path="Empos"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="직책"/>
+                                    <PropertyValue Property="Value" Path="Emgrp"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="생년월일"/>
+                                    <PropertyValue Property="Value" Path="BirthDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="입사일자"/>
+                                    <PropertyValue Property="Value" Path="EntryDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="퇴사일자"/>
+                                    <PropertyValue Property="Value" Path="LeaveDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="성별"/>
+                                    <PropertyValue Property="Value" Path="Gesch"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="재직상태"/>
+                                    <PropertyValue Property="Value" Path="EmpStatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="사진"/>
+                                    <PropertyValue Property="Value" Path="ImageUrl"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="orgeh">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="최종소속"/>
+                                    <PropertyValue Property="Value" Path="Orgeh"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="최종소속명"/>
+                                    <PropertyValue Property="Value" Path="OrgehNm"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="조직명(1차)"/>
+                                    <PropertyValue Property="Value" Path="Orgeh1Nm"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="조직명(2차)"/>
+                                    <PropertyValue Property="Value" Path="Orgeh2Nm"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="조직명(3차)"/>
+                                    <PropertyValue Property="Value" Path="Orgeh3Nm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="place">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="근무장소"/>
+                                    <PropertyValue Property="Value" Path="WPlace"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="사무실번호"/>
+                                    <PropertyValue Property="Value" Path="CPhone"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="핸드폰번호"/>
+                                    <PropertyValue Property="Value" Path="PPhone"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="사원기본정보"/>
+                        <PropertyValue Property="TypeNamePlural" String="사원기본정보"/>
+                        <PropertyValue Property="ImageUrl" Path="ImageUrl"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="사원기본정보 관리"/>
+                                <PropertyValue Property="Value" Path="PernrNm"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="OrgehNm"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사원번호"/>
+                            <PropertyValue Property="Value" Path="Pernr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="이름"/>
+                            <PropertyValue Property="Value" Path="Ename"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직급"/>
+                            <PropertyValue Property="Value" Path="Emgrd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직위"/>
+                            <PropertyValue Property="Value" Path="Empos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직책"/>
+                            <PropertyValue Property="Value" Path="Emgrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="생년월일"/>
+                            <PropertyValue Property="Value" Path="BirthDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="입사일자"/>
+                            <PropertyValue Property="Value" Path="EntryDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="퇴직일자"/>
+                            <PropertyValue Property="Value" Path="LeaveDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="성별"/>
+                            <PropertyValue Property="Value" Path="Gesch"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="재직상태"/>
+                            <PropertyValue Property="Value" Path="EmpStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직코드"/>
+                            <PropertyValue Property="Value" Path="Orgeh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명(1차)"/>
+                            <PropertyValue Property="Value" Path="Orgeh1Nm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명(2차)"/>
+                            <PropertyValue Property="Value" Path="Orgeh2Nm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명(3차)"/>
+                            <PropertyValue Property="Value" Path="Orgeh3Nm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사진"/>
+                            <PropertyValue Property="IconUrl" String="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIFvIlmFo4_ZrVOXPMlP08HNfdBUKyXhWJsU8Wuywr1Betn0NR6P5G909E7pLpSvkTjg&amp;usqp=CAU"/>
+                            <PropertyValue Property="Value" Path="ImageUrl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="근무장소"/>
+                            <PropertyValue Property="Value" Path="WPlace"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사무실번호"/>
+                            <PropertyValue Property="Value" Path="CPhone"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="핸드폰번호"/>
+                            <PropertyValue Property="Value" Path="PPhone"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ImageUrl"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사원번호"/>
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직급"/>
+                            <PropertyValue Property="Value" Path="Emgrd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직위"/>
+                            <PropertyValue Property="Value" Path="Empos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직책"/>
+                            <PropertyValue Property="Value" Path="Emgrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명"/>
+                            <PropertyValue Property="Value" Path="OrgehNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명(1차)"/>
+                            <PropertyValue Property="Value" Path="Orgeh1Nm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명(2차)"/>
+                            <PropertyValue Property="Value" Path="Orgeh2Nm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="조직명(3차)"/>
+                            <PropertyValue Property="Value" Path="Orgeh3Nm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Orgeh1Nm"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Orgeh2Nm"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Orgeh3Nm"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                        <PropertyPath>OrgehNm</PropertyPath>
+                        <PropertyPath>Orgeh1Nm</PropertyPath>
+                        <PropertyPath>Orgeh2Nm</PropertyPath>
+                        <PropertyPath>Orgeh3Nm</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

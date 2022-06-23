@@ -1,0 +1,867 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZHRS_OV_EMPLOYEE/$metadata">
+        <edmx:Include Namespace="cds_zhrs_ov_employee"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <!-- 발령정보 -->
+            <Annotations Target="cds_zhrs_ov_employee.ActionType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="ActionQF" >
+                    <Collection> 
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/> 
+                            <PropertyValue Property="Label" String="사원번호"/>
+                        </Record>
+                        <Record Type="UI.DataField" >
+                            <PropertyValue Property="Value" Path="Begda"/>
+                            <PropertyValue Property="Label" String="발령일자"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ActionNm"/>
+                            <PropertyValue Property="Label" String="발령유형"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="ActionQF2" >
+                    <Collection> 
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                            <PropertyValue Property="Label" String="사원번호"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Begda"/>
+                            <PropertyValue Property="Label" String="발령일자"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="OrgehAll"/>
+                            <PropertyValue Property="Label" String="소속"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="ActionQF3" >
+                    <Collection> 
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                            <PropertyValue Property="Label" String="사원번호"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Begda"/>
+                            <PropertyValue Property="Label" String="발령일자"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PositionNm"/>
+                            <PropertyValue Property="Label" String="직위"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="ActionHeader">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl"> 
+                                <PropertyValue Property="Url" String="http://www.google.com"/>
+                                <PropertyValue Property="Value" String="PernrNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 휴무쿼터 21  -->
+            <Annotations Target="cds_zhrs_ov_employee.Quota_21Type">
+                <Annotation Term="UI.DataPoint" Qualifier="header">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="평균사용율"/>
+                        <PropertyValue Property="Value" Path="TotalUseRage"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record Type="UI.CriticalityCalculationType">
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" String="60"/>
+                                <PropertyValue Property="DeviationRangeLowValue" String="30"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record Type="UI.TrendCalculationType">
+                                <PropertyValue Property="ReferenceValue" String="50"/>
+                                <PropertyValue Property="UpDifference" Decimal="100"/>
+                                <PropertyValue Property="StrongUpDifference" Decimal="20"/>
+                                <PropertyValue Property="DownDifference" Decimal="10"/>
+                                <PropertyValue Property="StrongDownDifference" Decimal="30"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="ActionHeader">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl"> 
+                                <PropertyValue Property="Url" String="http://www.google.com"/>
+                                <PropertyValue Property="Value" String="PernrNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="PQuota">
+                    <Record>
+                        <PropertyValue Property="Value" Path="PQuota"/>
+                        <PropertyValue Property="Title" String="Quota Type"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UseRage">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UseRage"/>
+                        <PropertyValue Property="Title" String="Quota Type"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="100"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="25"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="50"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PQuota"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="QuotaNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Quota_21Type/TotalUseRage" >
+                <Annotation Term="Org.OData.Measures.V1.Unit" String="%"/>
+            </Annotations>
+        <!-- 휴무쿼터 22 -->
+            <Annotations Target="cds_zhrs_ov_employee.Quota_22Type" >
+                <Annotation Term="UI.DataPoint" Qualifier="header">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="평균사용율"/>
+                        <PropertyValue Property="Value" Path="TotalUseRage"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record Type="UI.CriticalityCalculationType">
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" String="60"/>
+                                <PropertyValue Property="DeviationRangeLowValue" String="30"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record Type="UI.TrendCalculationType">
+                                <PropertyValue Property="ReferenceValue" String="50"/>
+                                <PropertyValue Property="UpDifference" Decimal="100"/>
+                                <PropertyValue Property="StrongUpDifference" Decimal="20"/>
+                                <PropertyValue Property="DownDifference" Decimal="10"/>
+                                <PropertyValue Property="StrongDownDifference" Decimal="30"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="ActionHeader">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl"> 
+                                <PropertyValue Property="Url" String="http://www.google.com"/>
+                                <PropertyValue Property="Value" String="PernrNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="PQuota">
+                    <Record>
+                        <PropertyValue Property="Value" Path="PQuota"/>
+                        <PropertyValue Property="Title" String="Quota Type"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UseRage">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UseRage"/>
+                        <PropertyValue Property="Title" String="Quota Type"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="100"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="25"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="50"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PQuota"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="QuotaNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                    </Collection>
+                </Annotation>               
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Quota_22Type/TotalUseRage" >
+                <Annotation Term="Org.OData.Measures.V1.Unit" String="%"/>
+            </Annotations>            
+        <!-- 휴무쿼터 31 -->
+            <Annotations Target="cds_zhrs_ov_employee.Quota_31Type" >
+                <Annotation Term="UI.DataPoint" Qualifier="header">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="평균사용율"/>
+                        <PropertyValue Property="Value" Path="TotalUseRage"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record Type="UI.CriticalityCalculationType">
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" String="60"/>
+                                <PropertyValue Property="DeviationRangeLowValue" String="30"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record Type="UI.TrendCalculationType">
+                                <PropertyValue Property="ReferenceValue" String="50"/>
+                                <PropertyValue Property="UpDifference" Decimal="100"/>
+                                <PropertyValue Property="StrongUpDifference" Decimal="20"/>
+                                <PropertyValue Property="DownDifference" Decimal="10"/>
+                                <PropertyValue Property="StrongDownDifference" Decimal="30"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation> 
+                <Annotation Term="UI.Identification" Qualifier="ActionHeader">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl"> 
+                                <PropertyValue Property="Url" String="http://www.google.com"/>
+                                <PropertyValue Property="Value" String="PernrNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="PQuota">
+                    <Record>
+                        <PropertyValue Property="Value" Path="PQuota"/>
+                        <PropertyValue Property="Title" String="Quota Type"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UseRage">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UseRage"/>
+                        <PropertyValue Property="Title" String="Quota Type"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="100"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="25"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="50"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PQuota"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="QuotaNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                    </Collection>
+                </Annotation>         
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Quota_31Type/TotalUseRage" >
+                <Annotation Term="Org.OData.Measures.V1.Unit" String="%"/>
+            </Annotations>            
+        <!-- 휴가신청  -->
+            <Annotations Target="cds_zhrs_ov_employee.LeaveType">
+                <Annotation Term="UI.LineItem">
+                    <Collection> 
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/> 
+                            <PropertyValue Property="Label" String="사원번호"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LeaveNm"/> 
+                            <PropertyValue Property="Label" String="휴무유형"/>
+                        </Record>
+                        <Record Type="UI.DataField" >
+                            <PropertyValue Property="Value" Path="Begda"/>
+                            <PropertyValue Property="Label" String="시작일자"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="StatusNm"/>
+                            <PropertyValue Property="Label" String="결재상태"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 어학성적 -->
+            <Annotations Target="cds_zhrs_ov_employee.Lang_SumType">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Lang sum"/>
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="일반"/>
+                            <PropertyValue Property="Value" Path="ScoreA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="스피킹"/>
+                            <PropertyValue Property="Value" Path="ScoreB"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="langChart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="어학점수"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Pernr</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Pernr"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>ScoreB</PropertyPath>
+                                <PropertyPath>ScoreA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ScoreB"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ScoreA"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Pernr"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="top5Changed">
+                    <Record>
+                        <PropertyValue Property="MaxItems" Int="5"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 학력통계 -->
+            <Annotations Target="cds_zhrs_ov_employee.School_SumType">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="School sum"/>
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>            
+                <Annotation Term="UI.Chart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String=" "/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>SchoolTypeNm</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="SchoolTypeNm"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>SCnt</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="SCnt"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#SCnt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="SCnt">
+                    <Record>
+                        <PropertyValue Property="Value" Path="SCnt"/>
+                        <PropertyValue Property="Title" String="학력"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Target"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="600"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="200"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="학력"/>
+                            <PropertyValue Property="Value" Path="SchoolTypeNm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="카운트"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#SCnt"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 사원정보 -->
+            <Annotations Target="cds_zhrs_ov_employee.EmployeeType">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="EmpBasicInfo"/>
+                            <PropertyValue Property="Action" String="display"/>
+                        </Record>       
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Employee"/>
+                        <PropertyValue Property="TypeNamePlural" String="사원정보"/>
+                        <PropertyValue Property="ImageUrl" Path="ImageUrl"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="사원정보"/>
+                                <PropertyValue Property="Value" Path="PernrNm"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="직급"/>
+                                <PropertyValue Property="Value" Path="EmgrdNm"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="EmpBasicInfo"/>
+                            <PropertyValue Property="Action" String="display"/>
+                        </Record>                    
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="IconUrl" Path="ImageUrl"/>
+                            <PropertyValue Property="Value" Path="PernrNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직급"/>
+                            <PropertyValue Property="Value" Path="EmgrdNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+
+                            <PropertyValue Property="Label" String="소속"/>
+                            <PropertyValue Property="Value" Path="OrgehAll"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 휴가승인 -->
+            <Annotations Target="cds_zhrs_ov_employee.Leave02Type">
+                <Annotation Term="UI.Identification" Qualifier="card">
+					<Collection>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="GWSAMPLE_BASIC.GWSAMPLE_BASIC_Entities/SalesOrder_Confirm"/>
+						</Record>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="GWSAMPLE_BASIC.GWSAMPLE_BASIC_Entities/SalesOrder_Cancel"/>
+							<PropertyValue Property="Label" String="승인"/>
+						</Record>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Action"/>
+							<PropertyValue Property="Action" String="toappnavsample"/>
+							<PropertyValue Property="Label" String="취소"/>
+						</Record>
+					</Collection>
+				</Annotation>
+                <Annotation Term="UI.Identification" Qualifier="header">
+					<Collection>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Action"/>
+							<PropertyValue Property="Action" String="toappnavsample"/>
+						</Record>
+					</Collection>
+				</Annotation>
+                <Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="휴가 승인"/>
+						<PropertyValue Property="TypeNamePlural" String="휴가 승인"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="PernrNm"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ImageUrl" Path="ImageUrl"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="OrgehNmAll"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="group1">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="LeaveNm"/>
+									<PropertyValue Property="Label" String="휴가유형"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Begda"/>
+									<PropertyValue Property="Label" String="휴무시작일"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Endda"/>
+									<PropertyValue Property="Label" String="휴가종료일"/>
+								</Record>
+                                <Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Reason"/>
+									<PropertyValue Property="Label" String="사유"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>   
+                <Annotation Term="com.sap.vocabularies.UI.v1.Facets" Qualifier="stack">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.ReferenceFacet">
+							<Annotation Term="com.sap.vocabularies.UI.v1.IsSummary"/>
+							<PropertyValue Property="Label" String="휴가"/>
+							<PropertyValue Property="Target" AnnotationPath="@com.sap.vocabularies.UI.v1.FieldGroup#group1"/>
+						</Record>
+					</Collection>
+				</Annotation>
+            </Annotations>
+            <!-- 자격통계 -->
+            <Annotations Target="cds_zhrs_ov_employee.Cert_SumType">
+                <Annotation Term="UI.DataPoint" Qualifier="header">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="전체합계"/>
+                        <PropertyValue Property="Value" Path="TotalCnt"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="4"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record Type="UI.CriticalityCalculationType">
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" String="1500"/>
+                                <PropertyValue Property="DeviationRangeLowValue" String="100"/>
+                            </Record>
+                            
+                        </PropertyValue>
+                    </Record>
+                </Annotation> 
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Cert Sum"/>
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>            
+                <Annotation Term="UI.Chart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String=" "/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CertTypeNm</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CertTypeNm"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category2"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>Scnt</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Scnt"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#SCnt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="SCnt">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Scnt"/>
+                        <PropertyValue Property="Title" String="자격"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Target"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="250"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="100"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="자격"/>
+                            <PropertyValue Property="Value" Path="CertTypeNm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="카운트"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#SCnt"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 최근어학정보  -->
+            <Annotations Target="cds_zhrs_ov_employee.LangType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection> 
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PernrNm"/> 
+                            <PropertyValue Property="Label" String="사원번호"/>
+                        </Record>
+                        <Record Type="UI.DataField" >
+                            <PropertyValue Property="Value" Path="Begda"/>
+                            <PropertyValue Property="Label" String="시험일자"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LangTypeNm"/>
+                            <PropertyValue Property="Label" String="어학유형"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Score"/>
+                            <PropertyValue Property="Label" String="성적"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl"> 
+                                <PropertyValue Property="Url" String="http://www.google.com"/>
+                                <PropertyValue Property="Value" String="PernrNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        <!-- 처별 인원현황 -->
+            <Annotations Target="cds_zhrs_ov_employee.EmpSumType">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="EmpSum"/>
+                            <PropertyValue Property="SemanticObject" String="Action"/>
+                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>            
+                <Annotation Term="UI.Chart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="인원통계"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Orgeh2Nm</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Orgeh2Nm"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>EmpCnt</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="EmpCnt"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#SCnt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="SCnt">
+                    <Record>
+                        <PropertyValue Property="Value" Path="EmpCnt"/>
+                        <PropertyValue Property="Title" String="인원"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Target"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="80"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="40"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="처"/>
+                            <PropertyValue Property="Value" Path="Orgeh2Nm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="인원"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#SCnt"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>    
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

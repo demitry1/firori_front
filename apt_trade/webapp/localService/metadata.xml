@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_apt_trade" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="HistoryType" sap:label="아파트 실거래가 거래이력 CDS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AptKey"/>
+                    <PropertyRef Name="DstGu"/>
+                    <PropertyRef Name="DstDong"/>
+                    <PropertyRef Name="AptName"/>
+                    <PropertyRef Name="ContractDate"/>
+                    <PropertyRef Name="Seqnr"/>
+                </Key>
+                <Property Name="AptKey" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="DstGu" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="DstDong" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="AptName" Type="Edm.String" Nullable="false" MaxLength="50"/>
+                <Property Name="ContractDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Seqnr" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="ContractDate2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Character Field with Length 10" sap:heading=""/>
+                <Property Name="ContractYm" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Square" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Scale" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative"/>
+                <Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Waers"/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="Floor" Type="Edm.Int16"/>
+                <Property Name="BuildYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
+                <Property Name="AddressRoad" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AddressJibun" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CancelDate" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Character Field with Length 10" sap:heading=""/>
+            </EntityType>
+            <EntityType Name="InfoType" sap:label="아파트 종합정보 프로젝션 CDS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Aptkey"/>
+                    <PropertyRef Name="DstGu"/>
+                    <PropertyRef Name="DstDong"/>
+                    <PropertyRef Name="AptName"/>
+                    <PropertyRef Name="Seqnr"/>
+                </Key>
+                <Property Name="Aptkey" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="아파트 키"/>
+                <Property Name="DstGu" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="DstDong" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="AptName" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="아파트 명"/>
+                <Property Name="Seqnr" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="BuildYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
+                <Property Name="AddressRoad" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AddressJibun" Type="Edm.String" MaxLength="100"/>
+                <Property Name="BuildingCnt" Type="Edm.String" MaxLength="9" sap:display-format="NonNegative" sap:label="동 갯수"/>
+                <Property Name="HouseholdCnt" Type="Edm.String" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="Heating" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Corridor" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Constructor" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ParkTot" Type="Edm.String" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="ParkLand" Type="Edm.String" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="ParkUnder" Type="Edm.String" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="OfficeTel" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <EntityType Name="TradeType" sap:label="아파트 실거래가 프로젝션 CDS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AptKey"/>
+                    <PropertyRef Name="DstGu"/>
+                    <PropertyRef Name="DstDong"/>
+                    <PropertyRef Name="AptName"/>
+                    <PropertyRef Name="ContractDate"/>
+                    <PropertyRef Name="Seqnr"/>
+                </Key>
+                <Property Name="AptKey" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="DstGu" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="구" sap:value-list="fixed-values"/>
+                <Property Name="DstDong" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="동" sap:value-list="standard"/>
+                <Property Name="AptName" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="아파트명"/>
+                <Property Name="ContractDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Seqnr" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="NonNegative"/>
+                <Property Name="ContractDate2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="계약일자" sap:quickinfo="Character Field with Length 10"/>
+                <Property Name="ContractYm" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Square" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Scale" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="평수"/>
+                <Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Waers" sap:label="매매가격"/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="Floor" Type="Edm.Int16"/>
+                <Property Name="BuildYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="준공년도"/>
+                <Property Name="BuildYearCriticality" Type="Edm.Byte"/>
+                <Property Name="AddressRoad" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AddressJibun" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CancelDate" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Character Field with Length 10" sap:heading=""/>
+                <NavigationProperty Name="to_History" Relationship="cds_zui_apt_trade.assoc_C9769C9F3CF86019113C64A9BF70E24E" FromRole="FromRole_assoc_C9769C9F3CF86019113C64A9BF70E24E" ToRole="ToRole_assoc_C9769C9F3CF86019113C64A9BF70E24E"/>
+                <NavigationProperty Name="to_Info" Relationship="cds_zui_apt_trade.assoc_8651EE0AEF12B42D257777C994C2F7C2" FromRole="FromRole_assoc_8651EE0AEF12B42D257777C994C2F7C2" ToRole="ToRole_assoc_8651EE0AEF12B42D257777C994C2F7C2"/>
+            </EntityType>
+            <EntityType Name="ZI_APT_DISTRICTType" sap:label="아파트 지역정보 CDS" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DstGu"/>
+                    <PropertyRef Name="DstDong"/>
+                </Key>
+                <Property Name="DstGu" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="구"/>
+                <Property Name="DstDong" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="동"/>
+            </EntityType>
+            <EntityType Name="ZI_APT_DISTRICT_GUType" sap:label="아파트 지역정보(구) CDS" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DstGu"/>
+                </Key>
+                <Property Name="DstGu" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="구"/>
+            </EntityType>
+            <Association Name="assoc_8651EE0AEF12B42D257777C994C2F7C2" sap:content-version="1">
+                <End Type="cds_zui_apt_trade.TradeType" Multiplicity="1" Role="FromRole_assoc_8651EE0AEF12B42D257777C994C2F7C2"/>
+                <End Type="cds_zui_apt_trade.InfoType" Multiplicity="*" Role="ToRole_assoc_8651EE0AEF12B42D257777C994C2F7C2"/>
+            </Association>
+            <Association Name="assoc_C9769C9F3CF86019113C64A9BF70E24E" sap:content-version="1">
+                <End Type="cds_zui_apt_trade.TradeType" Multiplicity="1" Role="FromRole_assoc_C9769C9F3CF86019113C64A9BF70E24E"/>
+                <End Type="cds_zui_apt_trade.HistoryType" Multiplicity="*" Role="ToRole_assoc_C9769C9F3CF86019113C64A9BF70E24E"/>
+            </Association>
+            <EntityContainer Name="cds_zui_apt_trade_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="History" EntityType="cds_zui_apt_trade.HistoryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Info" EntityType="cds_zui_apt_trade.InfoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Trade" EntityType="cds_zui_apt_trade.TradeType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_APT_DISTRICT" EntityType="cds_zui_apt_trade.ZI_APT_DISTRICTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_APT_DISTRICT_GU" EntityType="cds_zui_apt_trade.ZI_APT_DISTRICT_GUType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_8651EE0AEF12B42D257777C994C2F7C2" Association="cds_zui_apt_trade.assoc_8651EE0AEF12B42D257777C994C2F7C2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Trade" Role="FromRole_assoc_8651EE0AEF12B42D257777C994C2F7C2"/>
+                    <End EntitySet="Info" Role="ToRole_assoc_8651EE0AEF12B42D257777C994C2F7C2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C9769C9F3CF86019113C64A9BF70E24E" Association="cds_zui_apt_trade.assoc_C9769C9F3CF86019113C64A9BF70E24E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Trade" Role="FromRole_assoc_C9769C9F3CF86019113C64A9BF70E24E"/>
+                    <End EntitySet="History" Role="ToRole_assoc_C9769C9F3CF86019113C64A9BF70E24E"/>
+                </AssociationSet>
+                <FunctionImport Name="AlertAptInfo" ReturnType="cds_zui_apt_trade.TradeType" EntitySet="Trade" m:HttpMethod="POST" sap:action-for="cds_zui_apt_trade.TradeType">
+                    <Parameter Name="AptKey" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="DstGu" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="DstDong" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="AptName" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="ContractDate" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                    <Parameter Name="Seqnr" Type="Edm.String" Mode="In" MaxLength="9"/>
+                </FunctionImport>
+                <FunctionImport Name="DisplayAptInfo" ReturnType="cds_zui_apt_trade.TradeType" EntitySet="Trade" m:HttpMethod="POST" sap:action-for="cds_zui_apt_trade.TradeType">
+                    <Parameter Name="AptKey" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="DstGu" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="DstDong" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="AptName" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="ContractDate" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                    <Parameter Name="Seqnr" Type="Edm.String" Mode="In" MaxLength="9"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="cds_zui_apt_trade.TradeType/DstGu" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="아파트 지역정보(구) CDS"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_APT_DISTRICT_GU"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DstGu"/>
+                                    <PropertyValue Property="ValueListProperty" String="DstGu"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_apt_trade.TradeType/DstDong" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="아파트 지역정보 CDS"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_APT_DISTRICT"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DstDong"/>
+                                    <PropertyValue Property="ValueListProperty" String="DstDong"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DstGu"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_apt_trade.cds_zui_apt_trade_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_apt_trade.TradeType/AptKey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_apt_trade.TradeType/AptName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_apt_trade.TradeType/ContractDate2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_apt_trade.TradeType/Price" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <atom:link rel="self" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZUI_APT_TRADE/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZUI_APT_TRADE/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

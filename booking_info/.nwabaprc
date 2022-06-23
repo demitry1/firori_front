@@ -1,0 +1,11 @@
+{
+    "base": "./dist",
+    "conn_server": "http://vhcala4hci:50000/",
+    "conn_client": "001",
+    "conn_user": "developer",
+    "conn_password": "saphr94!@",
+    "abap_package": "ZDKSY",
+    "abap_transport": "A4HK900075",
+    "abap_bsp": "zbooking_info",
+    "abap_bsp_text": "Booking Infomation"
+}

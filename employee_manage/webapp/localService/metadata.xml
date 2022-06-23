@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zhrs_ov_employee" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZHRV_CL_EMGRD_VHType" sap:label="직급 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Emgrd"/>
+                </Key>
+                <Property Name="Emgrd" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="EmgrdNm"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ActionType" sap:label="발령정보 Project Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                    <PropertyRef Name="Massn"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename" sap:label="사원번호"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="발령일자"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38" sap:label="사원번호"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Massg" Type="Edm.String" MaxLength="3"/>
+                <Property Name="MassnNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="MassgNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ActionNm" Type="Edm.String" MaxLength="42"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20" sap:label="직급명"/>
+                <Property Name="EmposNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="EmgrpNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PositionNm" Type="Edm.String" MaxLength="64"/>
+                <Property Name="Orgeh1Nm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Orgeh2Nm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Orgeh3Nm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="OrgehAll" Type="Edm.String" MaxLength="92"/>
+                <Property Name="Url" Type="Edm.String" MaxLength="18"/>
+            </EntityType>
+            <EntityType Name="Cert_SumType" sap:label="자격 집계 Composite 뷰" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CertTypeNm"/>
+                </Key>
+                <Property Name="CertTypeNm" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="Scnt" Type="Edm.Int32"/>
+                <Property Name="TotalCnt" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="EmployeeType" sap:label="사원정보 Projection Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="사원번호"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38" sap:label="사원번호"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="EmposNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="EmgrpNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="OrgehNm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Orgeh1Nm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Orgeh2Nm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Orgeh3Nm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="EmpSumType" sap:label="처별 인원통계 Projection" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Orgeh2Nm"/>
+                </Key>
+                <Property Name="Orgeh2Nm" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="소속"/>
+                <Property Name="EmpCnt" Type="Edm.Int32" sap:label="인원"/>
+            </EntityType>
+            <EntityType Name="LangType" sap:label="최근어학성적 Projection Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="5" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PositionNm" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LangTypeNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Begda" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Score" Type="Edm.Int16"/>
+            </EntityType>
+            <EntityType Name="Lang_SumType" sap:label="어학 집계 Projection Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ScoreA" Type="Edm.Int16" sap:label="일반"/>
+                <Property Name="ScoreB" Type="Edm.Int16" sap:label="스피킹"/>
+            </EntityType>
+            <EntityType Name="LeaveType" sap:label="휴가신청 Projection Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="LeaveType"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename"/>
+                <Property Name="LeaveType" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38" sap:label="사원번호"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LeaveNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LeaveDays" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1"/>
+                <Property Name="StatusNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Reason" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="Leave02Type" sap:label="휴가 승인대상 Projection Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="LeaveType"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="LeaveType" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PositionNm" Type="Edm.String" MaxLength="64"/>
+                <Property Name="OrgehNmAll" Type="Edm.String" MaxLength="92"/>
+                <Property Name="LeaveNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LeaveDays" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1"/>
+                <Property Name="StatusNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Reason" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="Quota_21Type" sap:label="휴가쿼터 Project Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="QuotaType"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename"/>
+                <Property Name="QuotaType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="QuotaNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="PQuota" Type="Edm.String" MaxLength="17"/>
+                <Property Name="UseRage" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="Percentage"/>
+                <Property Name="TotalUseRage" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="Percentage" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Aedtm" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on"/>
+                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+            </EntityType>
+            <EntityType Name="Quota_22Type" sap:label="휴가쿼터_22 Project Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="QuotaType"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename"/>
+                <Property Name="QuotaType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="QuotaNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="PQuota" Type="Edm.String" MaxLength="17"/>
+                <Property Name="UseRage" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="Percentage"/>
+                <Property Name="TotalUseRage" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="Percentage" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Aedtm" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on"/>
+                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+            </EntityType>
+            <EntityType Name="Quota_31Type" sap:label="휴가쿼터_31 Project Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="QuotaType"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename"/>
+                <Property Name="QuotaType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="PernrNm" Type="Edm.String" MaxLength="38"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="QuotaNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="PQuota" Type="Edm.String" MaxLength="17"/>
+                <Property Name="UseRage" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="Percentage"/>
+                <Property Name="TotalUseRage" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="Percentage" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Aedtm" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on"/>
+                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+            </EntityType>
+            <EntityType Name="School_SumType" sap:label="학력 집계 Projection Overview" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SchoolTypeNm"/>
+                </Key>
+                <Property Name="SchoolTypeNm" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="SCnt" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityContainer Name="cds_zhrs_ov_employee_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZHRV_CL_EMGRD_VH" EntityType="cds_zhrs_ov_employee.ZHRV_CL_EMGRD_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Action" EntityType="cds_zhrs_ov_employee.ActionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Cert_Sum" EntityType="cds_zhrs_ov_employee.Cert_SumType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Employee" EntityType="cds_zhrs_ov_employee.EmployeeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="EmpSum" EntityType="cds_zhrs_ov_employee.EmpSumType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Lang" EntityType="cds_zhrs_ov_employee.LangType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Lang_Sum" EntityType="cds_zhrs_ov_employee.Lang_SumType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Leave" EntityType="cds_zhrs_ov_employee.LeaveType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Leave02" EntityType="cds_zhrs_ov_employee.Leave02Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Quota_21" EntityType="cds_zhrs_ov_employee.Quota_21Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Quota_22" EntityType="cds_zhrs_ov_employee.Quota_22Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Quota_31" EntityType="cds_zhrs_ov_employee.Quota_31Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="School_Sum" EntityType="cds_zhrs_ov_employee.School_SumType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="cds_zhrs_ov_employee.ActionType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.EmployeeType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.LangType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Lang_SumType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.LeaveType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Leave02Type/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Quota_21Type/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Quota_22Type/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Quota_31Type/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.cds_zhrs_ov_employee_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_ov_employee.Lang_SumType/Pernr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="Action"/>
+            </Annotations>
+            <atom:link rel="self" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZHRS_OV_EMPLOYEE/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZHRS_OV_EMPLOYEE/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

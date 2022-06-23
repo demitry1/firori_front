@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_employee_001" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="AppointType" sap:label="발령정보 Projection 뷰" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="Massn" Type="Edm.String" MaxLength="2"/>
+                <Property Name="Massnname" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative"/>
+                <Property Name="Zposition" Type="Edm.String" MaxLength="20"/>
+                <NavigationProperty Name="to_Employee" Relationship="cds_zui_employee_001.assoc_E799CBF41F5889E2949092CA32E4DC58" FromRole="FromRole_assoc_E799CBF41F5889E2949092CA32E4DC58" ToRole="ToRole_assoc_E799CBF41F5889E2949092CA32E4DC58"/>
+            </EntityType>
+            <EntityType Name="EmployeeType" sap:label="사원정보 Projection 뷰" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Birthdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Entrydate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative"/>
+                <Property Name="OrgehName" Type="Edm.String" MaxLength="20" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Zposition" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Yearpay" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currencycode"/>
+                <Property Name="Currencycode" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <NavigationProperty Name="to_Appoint" Relationship="cds_zui_employee_001.assoc_504A05FD1C99F0883A3F8B71F89DFE39" FromRole="FromRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39" ToRole="ToRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39"/>
+                <NavigationProperty Name="to_Orgeh" Relationship="cds_zui_employee_001.assoc_ABE8538B40F06AD5666CF3B0F419B48A" FromRole="FromRole_assoc_ABE8538B40F06AD5666CF3B0F419B48A" ToRole="ToRole_assoc_ABE8538B40F06AD5666CF3B0F419B48A"/>
+            </EntityType>
+            <EntityType Name="OrgehType" sap:label="조직정보 Interface CDS View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Orgeh"/>
+                </Key>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative"/>
+                <Property Name="Orgehname" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <Association Name="assoc_E799CBF41F5889E2949092CA32E4DC58" sap:content-version="1">
+                <End Type="cds_zui_employee_001.AppointType" Multiplicity="1" Role="FromRole_assoc_E799CBF41F5889E2949092CA32E4DC58"/>
+                <End Type="cds_zui_employee_001.EmployeeType" Multiplicity="1" Role="ToRole_assoc_E799CBF41F5889E2949092CA32E4DC58"/>
+            </Association>
+            <Association Name="assoc_504A05FD1C99F0883A3F8B71F89DFE39" sap:content-version="1">
+                <End Type="cds_zui_employee_001.EmployeeType" Multiplicity="1" Role="FromRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zui_employee_001.AppointType" Multiplicity="*" Role="ToRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39">
+                        <PropertyRef Name="Pernr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39">
+                        <PropertyRef Name="Pernr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_ABE8538B40F06AD5666CF3B0F419B48A" sap:content-version="1">
+                <End Type="cds_zui_employee_001.EmployeeType" Multiplicity="1" Role="FromRole_assoc_ABE8538B40F06AD5666CF3B0F419B48A"/>
+                <End Type="cds_zui_employee_001.OrgehType" Multiplicity="1" Role="ToRole_assoc_ABE8538B40F06AD5666CF3B0F419B48A"/>
+            </Association>
+            <EntityContainer Name="cds_zui_employee_001_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Appoint" EntityType="cds_zui_employee_001.AppointType" sap:content-version="1"/>
+                <EntitySet Name="Employee" EntityType="cds_zui_employee_001.EmployeeType" sap:content-version="1"/>
+                <EntitySet Name="Orgeh" EntityType="cds_zui_employee_001.OrgehType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_E799CBF41F5889E2949092CA32E4DC58" Association="cds_zui_employee_001.assoc_E799CBF41F5889E2949092CA32E4DC58" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Appoint" Role="FromRole_assoc_E799CBF41F5889E2949092CA32E4DC58"/>
+                    <End EntitySet="Employee" Role="ToRole_assoc_E799CBF41F5889E2949092CA32E4DC58"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_504A05FD1C99F0883A3F8B71F89DFE39" Association="cds_zui_employee_001.assoc_504A05FD1C99F0883A3F8B71F89DFE39" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Employee" Role="FromRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39"/>
+                    <End EntitySet="Appoint" Role="ToRole_assoc_504A05FD1C99F0883A3F8B71F89DFE39"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_ABE8538B40F06AD5666CF3B0F419B48A" Association="cds_zui_employee_001.assoc_ABE8538B40F06AD5666CF3B0F419B48A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Employee" Role="FromRole_assoc_ABE8538B40F06AD5666CF3B0F419B48A"/>
+                    <End EntitySet="Orgeh" Role="ToRole_assoc_ABE8538B40F06AD5666CF3B0F419B48A"/>
+                </AssociationSet>
+                <FunctionImport Name="set_status_currency" ReturnType="cds_zui_employee_001.EmployeeType" EntitySet="Employee" m:HttpMethod="POST" sap:action-for="cds_zui_employee_001.EmployeeType">
+                    <Parameter Name="Pernr" Type="Edm.String" Mode="In" MaxLength="8"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="cds_zui_employee_001.cds_zui_employee_001_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.AppointType/Begda" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.AppointType/Endda" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.AppointType/Massn" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.AppointType/Orgeh" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.AppointType/Pernr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.EmployeeType/Birthdate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.EmployeeType/Ename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.EmployeeType/Entrydate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.EmployeeType/Orgeh" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.EmployeeType/Pernr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_employee_001.cds_zui_employee_001_Entities/Employee" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Appoint"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZUI_EMPLOYEE_001/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZUI_EMPLOYEE_001/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
