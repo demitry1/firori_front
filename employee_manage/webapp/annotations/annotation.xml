@@ -15,6 +15,14 @@
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
         <!-- 발령정보 -->
             <Annotations Target="cds_zhrs_ov_employee.ActionType">
+                <Annotation Term="UI.Identification" Qualifier="ActionHeader">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ActionManage"/>
+                            <PropertyValue Property="Action" String="display"/>
+                        </Record>       
+                    </Collection>
+                </Annotation>       
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>Pernr</PropertyPath>
@@ -24,8 +32,8 @@
                 <Annotation Term="UI.LineItem" Qualifier="ActionQF" >
                     <Collection> 
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="Action"/>
-                            <PropertyValue Property="Action" String="toappnavsample2"/>
+                            <PropertyValue Property="SemanticObject" String="ActionManage"/>
+                            <PropertyValue Property="Action" String="display"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="PernrNm"/> 
@@ -43,6 +51,10 @@
                 </Annotation>
                 <Annotation Term="UI.LineItem" Qualifier="ActionQF2" >
                     <Collection> 
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ActionManage"/>
+                            <PropertyValue Property="Action" String="display"/>
+                        </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="PernrNm"/>
                             <PropertyValue Property="Label" String="사원번호"/>
@@ -58,7 +70,11 @@
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.LineItem" Qualifier="ActionQF3" >
-                    <Collection> 
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ActionManage"/>
+                            <PropertyValue Property="Action" String="display"/>
+                        </Record> 
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="PernrNm"/>
                             <PropertyValue Property="Label" String="사원번호"/>
@@ -72,15 +88,7 @@
                             <PropertyValue Property="Label" String="직위"/>
                         </Record>
                     </Collection>
-                </Annotation>
-                <Annotation Term="UI.Identification" Qualifier="ActionHeader">
-                    <Collection>
-                        <Record Type="UI.DataFieldWithUrl"> 
-                                <PropertyValue Property="Url" String="http://www.google.com"/>
-                                <PropertyValue Property="Value" String="PernrNm"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
+                </Annotation>             
             </Annotations>
         <!-- 휴무쿼터 21  -->
             <Annotations Target="cds_zhrs_ov_employee.Quota_21Type">
@@ -108,10 +116,10 @@
                 </Annotation>
                 <Annotation Term="UI.Identification" Qualifier="ActionHeader">
                     <Collection>
-                        <Record Type="UI.DataFieldWithUrl"> 
-                                <PropertyValue Property="Url" String="http://www.google.com"/>
-                                <PropertyValue Property="Value" String="PernrNm"/>
-                        </Record>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="QuotaManage"/>
+                            <PropertyValue Property="Action" String="display"/>
+                        </Record> 
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.DataPoint" Qualifier="PQuota">
@@ -194,9 +202,9 @@
                 </Annotation>
                 <Annotation Term="UI.Identification" Qualifier="ActionHeader">
                     <Collection>
-                        <Record Type="UI.DataFieldWithUrl"> 
-                                <PropertyValue Property="Url" String="http://www.google.com"/>
-                                <PropertyValue Property="Value" String="PernrNm"/>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="QuotaManage"/>
+                            <PropertyValue Property="Action" String="display"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -280,9 +288,9 @@
                 </Annotation> 
                 <Annotation Term="UI.Identification" Qualifier="ActionHeader">
                     <Collection>
-                        <Record Type="UI.DataFieldWithUrl"> 
-                                <PropertyValue Property="Url" String="http://www.google.com"/>
-                                <PropertyValue Property="Value" String="PernrNm"/>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="QuotaManage"/>
+                            <PropertyValue Property="Action" String="display"/>
                         </Record>
                     </Collection>
                 </Annotation>

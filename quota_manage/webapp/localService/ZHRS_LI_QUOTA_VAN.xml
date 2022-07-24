@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zhrs_li_quota/$metadata">
+        <edmx:Include Namespace="ZHRS_LI_QUOTA" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zhrs_li_quota_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/Empos">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/Emgrp">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/ImageUrl">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/TQuota21">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/RQuota21">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/TQuota22">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/RQuota22">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/TQuota31">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/Percentage">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/_QuotaAll">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType">
+                <Annotation Term="UI.Chart" Qualifier="R22">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>UQuota22</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="UQuota22"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#UQuota22"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="U31">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="경조쿼터"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>UQuota31</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="UQuota31"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#UQuota31"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="U22">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="이월쿼터"/>
+                        <PropertyValue Property="Description" String="사용 / 부여"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>UQuota22I</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="UQuota22I"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#UQuota22I"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="U21">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="연차쿼터"/>
+                        <PropertyValue Property="Description" String="사용 / 부여"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>UQuota21</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="UQuota21"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#UQuota21"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UQuota21">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UQuota21"/>
+                        <PropertyValue Property="Title" String="연차쿼터"/>
+                        <PropertyValue Property="TargetValue" Path="TQuota21"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="25"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="8"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="16"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UQuota22">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UQuota22"/>
+                        <PropertyValue Property="Title" String="이월사용율"/>
+                        <PropertyValue Property="TargetValue" Path="TQuota22"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="100"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="2"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="4"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UQuota22I">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UQuota22I"/>
+                        <PropertyValue Property="Title" String="이월쿼터"/>
+                        <PropertyValue Property="TargetValue" Path="TQuota22"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="5"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="2"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="4"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UQuota31">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UQuota31"/>
+                        <PropertyValue Property="Title" String="경조쿼터"/>
+                        <PropertyValue Property="TargetValue" Path="TQuota31"/>
+                        <PropertyValue Property="MinimumValue" Decimal="0"/>
+                        <PropertyValue Property="MaximumValue" Decimal="4"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="2"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="3"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UseRage21">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UseRage21"/>
+                        <PropertyValue Property="Title" String="연차사용율"/>
+                        <PropertyValue Property="TargetValue" Decimal="100"/>
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                        <PropertyValue Property="Criticality" Path="UseRage21"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UseRage22">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UseRage22"/>
+                        <PropertyValue Property="Title" String="이월사용율"/>
+                        <PropertyValue Property="TargetValue" Decimal="100"/>
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UseRage31">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UseRage31"/>
+                        <PropertyValue Property="Title" String="경조사용율"/>
+                        <PropertyValue Property="TargetValue" Decimal="100"/>
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="연차쿼터"/>
+                            <PropertyValue Property="ID" String="Qouta21"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#U21"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="UseRage21"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage21"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="이월쿼터"/>
+                            <PropertyValue Property="ID" String="Qouta21I"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#U22"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Rage22"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage22"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="경조쿼터"/>
+                            <PropertyValue Property="ID" String="Qouta31"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#U31"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Rage31"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage31"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="사원정보"/>
+                            <PropertyValue Property="ID" String="Employee"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="휴무쿼터 내역"/>
+                            <PropertyValue Property="ID" String="QuotaAll"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_QuotaAll/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="휴무쿼터"/>
+                        <PropertyValue Property="TypeNamePlural" String="휴무쿼터"/>
+                        <PropertyValue Property="ImageUrl" Path="ImageUrl"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="휴무쿼터 정보"/>
+                                <PropertyValue Property="Value" Path="Pernr"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Ename"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사원번호"/>
+                            <PropertyValue Property="Value" Path="Pernr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직급"/>
+                            <PropertyValue Property="Value" Path="EmgrdNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직군"/>
+                            <PropertyValue Property="Value" Path="EmposNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직위"/>
+                            <PropertyValue Property="Value" Path="EmgrpNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="소속"/>
+                            <PropertyValue Property="Value" Path="OrgehNm"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사원번호"/>
+                            <PropertyValue Property="Value" Path="Pernr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="직급"/>
+                            <PropertyValue Property="Value" Path="EmgrdNm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="소속"/>
+                            <PropertyValue Property="Value" Path="OrgehNm"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="연차쿼터"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#U21"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="연차사용율"/>
+                            <PropertyValue Property="Criticality" Path="UseRage21"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage21"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="이월쿼터"/>
+                            <PropertyValue Property="Value" Path="PQuota22"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="이월사용율"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#R22"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="경조쿼터"/>
+                            <PropertyValue Property="Value" Path="TQuota31"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="경조쿼터"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#U31"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="경조사용율"/>
+                            <PropertyValue Property="Criticality" Path="UseRage31"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UseRage31"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Pernr"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pernr</PropertyPath>
+                        <PropertyPath>Emgrd</PropertyPath>
+                        <PropertyPath>Orgeh</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/Pernr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/QuotaNm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/Aedtm">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/Uname">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/Begda_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/Endda_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/QuotaType_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType">
+                <Annotation Term="UI.DataPoint" Qualifier="DaBegda">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Begda"/>
+                        <PropertyValue Property="Title" String="시작일자"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="DaEndda">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Endda"/>
+                        <PropertyValue Property="Title" String="종료일자"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="휴무쿼터 내역"/>
+                            <PropertyValue Property="ID" String="QuotaAll"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Begda"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#DaBegda"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Endda"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#DaEndda"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="휴무쿼터"/>
+                        <PropertyValue Property="TypeNamePlural" String="휴무쿼터"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="휴무쿼터"/>
+                                <PropertyValue Property="Value" Path="QuotaNm"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Begda"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="휴무유형"/>
+                            <PropertyValue Property="Value" Path="QuotaType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="시작일자"/>
+                            <PropertyValue Property="Value" Path="Begda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="종료일자"/>
+                            <PropertyValue Property="Value" Path="Endda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="총쿼터"/>
+                            <PropertyValue Property="Value" Path="TQuota"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사용쿼터"/>
+                            <PropertyValue Property="Value" Path="UQuota"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="잔여쿼터"/>
+                            <PropertyValue Property="Value" Path="RQuota"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="휴무유형"/>
+                            <PropertyValue Property="Value" Path="QuotaType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="시작일자"/>
+                            <PropertyValue Property="Value" Path="Begda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="종료일자"/>
+                            <PropertyValue Property="Value" Path="Endda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="총쿼터"/>
+                            <PropertyValue Property="Value" Path="TQuota"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="사용쿼터"/>
+                            <PropertyValue Property="Value" Path="UQuota"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="잔여쿼터"/>
+                            <PropertyValue Property="Value" Path="RQuota"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="QuotaType"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Begda"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

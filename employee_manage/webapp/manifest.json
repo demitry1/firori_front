@@ -145,17 +145,17 @@
                             "openInNewWindow": true
                         },
                         {
-                            "title": "발령정보 ",
+                            "title": "발령관리 ",
                             "imageUri": "sap-icon://action",
-                            "imageAltText": "발령정보 조회",
-                            "targetUri": "https://sap.com",
+                            "imageAltText": "발령정보 관리",
+                            "targetUri": "https://vhcala4hci:50001/sap/bc/ui2/flp#ActionManage-display",
                             "openInNewWindow": true
                         },
                         {
                             "title": "휴무쿼터",
                             "imageUri": "sap-icon://pie-chart",
-                            "imageAltText": "휴무쿼터 조회",
-                            "targetUri": "https://sap.com",
+                            "imageAltText": "휴무쿼터 관리",
+                            "targetUri": "https://vhcala4hci:50001/sap/bc/ui2/flp#QuotaManage-display",
                             "openInNewWindow": true
                         },
                         {

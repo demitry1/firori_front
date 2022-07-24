@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zhrs_li_quota" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZHRV_CL_EMGRD_VHType" sap:label="직급 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Emgrd"/>
+                </Key>
+                <Property Name="Emgrd" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="EmgrdNm"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_ORGEH_VH4Type" sap:label="조직도 최총코드 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Orgeh"/>
+                    <PropertyRef Name="OrgehNm"/>
+                </Key>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="조직코드"/>
+                <Property Name="OrgehNm" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="조직명"/>
+                <Property Name="Orgeh1Nm" Type="Edm.String" MaxLength="30" sap:label="조직명(1차)"/>
+                <Property Name="Orgeh2Nm" Type="Edm.String" MaxLength="30" sap:label="조직명(2차)"/>
+                <Property Name="Orgeh3Nm" Type="Edm.String" MaxLength="30" sap:label="조직명(3차)"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_QOUTATYPE_VHType" sap:label="쿼터유형 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="QuotaType"/>
+                </Key>
+                <Property Name="QuotaType" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="QuotaNm"/>
+                <Property Name="QuotaNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="EmployeeType" sap:label="휴무쿼터 Projection List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename" sap:label="사원번호"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Empos" Type="Edm.String" MaxLength="2"/>
+                <Property Name="EmposNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Emgrp" Type="Edm.String" MaxLength="2"/>
+                <Property Name="EmgrpNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="소속" sap:value-list="standard"/>
+                <Property Name="OrgehNm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="255"/>
+                <Property Name="TQuota21" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota21" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota21" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UseRage21" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="Percentage"/>
+                <Property Name="TQuota22" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota22" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota22I" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota22" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="PQuota22" Type="Edm.String" MaxLength="17"/>
+                <Property Name="UseRage22" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="Percentage"/>
+                <Property Name="TQuota31" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota31" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota31" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UseRage31" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="Percentage"/>
+                <Property Name="Percentage" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Quota22Criticality" Type="Edm.Byte" sap:label="123"/>
+                <NavigationProperty Name="to_QuotaAll" Relationship="cds_zhrs_li_quota.assoc_CBD54BE71E8BBFD3B9038A1817B8DF48" FromRole="FromRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48" ToRole="ToRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48"/>
+            </EntityType>
+            <EntityType Name="QuotaAllType" sap:label="휴무쿼터 Projection all List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="QuotaType"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                </Key>
+                <Property Name="Begda_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endda_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuotaType_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="QuotaType" Type="Edm.String" Nullable="false" MaxLength="2" sap:field-control="QuotaType_fc" sap:text="QuotaNm" sap:value-list="fixed-values"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="Begda_fc"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="Endda_fc"/>
+                <Property Name="QuotaNm" Type="Edm.String" MaxLength="20" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="UQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RQuota" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Aedtm" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on"/>
+                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <NavigationProperty Name="to_Employee" Relationship="cds_zhrs_li_quota.assoc_0DA3192F330A74AB7EFC214F2CE44CD0" FromRole="FromRole_assoc_0DA3192F330A74AB7EFC214F2CE44CD0" ToRole="ToRole_assoc_0DA3192F330A74AB7EFC214F2CE44CD0"/>
+            </EntityType>
+            <Association Name="assoc_0DA3192F330A74AB7EFC214F2CE44CD0" sap:content-version="1">
+                <End Type="cds_zhrs_li_quota.QuotaAllType" Multiplicity="1" Role="FromRole_assoc_0DA3192F330A74AB7EFC214F2CE44CD0"/>
+                <End Type="cds_zhrs_li_quota.EmployeeType" Multiplicity="1" Role="ToRole_assoc_0DA3192F330A74AB7EFC214F2CE44CD0"/>
+            </Association>
+            <Association Name="assoc_CBD54BE71E8BBFD3B9038A1817B8DF48" sap:content-version="1">
+                <End Type="cds_zhrs_li_quota.EmployeeType" Multiplicity="1" Role="FromRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zhrs_li_quota.QuotaAllType" Multiplicity="*" Role="ToRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48">
+                        <PropertyRef Name="Pernr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48">
+                        <PropertyRef Name="Pernr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_zhrs_li_quota_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZHRV_CL_EMGRD_VH" EntityType="cds_zhrs_li_quota.ZHRV_CL_EMGRD_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_ORGEH_VH4" EntityType="cds_zhrs_li_quota.ZHRV_CL_ORGEH_VH4Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_QOUTATYPE_VH" EntityType="cds_zhrs_li_quota.ZHRV_CL_QOUTATYPE_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Employee" EntityType="cds_zhrs_li_quota.EmployeeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="QuotaAll" EntityType="cds_zhrs_li_quota.QuotaAllType" sap:content-version="1"/>
+                <AssociationSet Name="assoc_0DA3192F330A74AB7EFC214F2CE44CD0" Association="cds_zhrs_li_quota.assoc_0DA3192F330A74AB7EFC214F2CE44CD0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="QuotaAll" Role="FromRole_assoc_0DA3192F330A74AB7EFC214F2CE44CD0"/>
+                    <End EntitySet="Employee" Role="ToRole_assoc_0DA3192F330A74AB7EFC214F2CE44CD0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CBD54BE71E8BBFD3B9038A1817B8DF48" Association="cds_zhrs_li_quota.assoc_CBD54BE71E8BBFD3B9038A1817B8DF48" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Employee" Role="FromRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48"/>
+                    <End EntitySet="QuotaAll" Role="ToRole_assoc_CBD54BE71E8BBFD3B9038A1817B8DF48"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.EmployeeType/Orgeh" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="조직도 최총코드 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_ORGEH_VH4"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Orgeh"/>
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrgehNm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh1Nm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh2Nm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh3Nm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.QuotaAllType/QuotaType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="쿼터유형 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_QOUTATYPE_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="QuotaType"/>
+                                    <PropertyValue Property="ValueListProperty" String="QuotaType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="QuotaNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.cds_zhrs_li_quota_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.cds_zhrs_li_quota_Entities/QuotaAll" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Begda_fc</PropertyPath>
+                                <PropertyPath>Endda_fc</PropertyPath>
+                                <PropertyPath>QuotaType_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Begda_fc</PropertyPath>
+                                <PropertyPath>Endda_fc</PropertyPath>
+                                <PropertyPath>QuotaType_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_quota.cds_zhrs_li_quota_Entities/Employee" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_QuotaAll"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZHRS_LI_QUOTA/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZHRS_LI_QUOTA/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

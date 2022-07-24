@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://vhcala4hci:50000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zhrs_li_action" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZHRV_CL_EMGRD_VHType" sap:label="직급 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Emgrd"/>
+                </Key>
+                <Property Name="Emgrd" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="EmgrdNm"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_EMGRP_VHType" sap:label="직책 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Emgrp"/>
+                </Key>
+                <Property Name="Emgrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="EmgrpNm"/>
+                <Property Name="EmgrpNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_EMPOS_VHType" sap:label="직위 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empos"/>
+                </Key>
+                <Property Name="Empos" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="EmposNm"/>
+                <Property Name="EmposNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_MASSG_VHType" sap:label="발령사유 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Massn"/>
+                    <PropertyRef Name="Massg"/>
+                </Key>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="MassgNm" sap:label="발령코드"/>
+                <Property Name="Massg" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="발령사유"/>
+                <Property Name="MassgNm" Type="Edm.String" MaxLength="20" sap:label="발령사유명"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_MASSN_VHType" sap:label="발령코드 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Massn"/>
+                </Key>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="MassnNm"/>
+                <Property Name="MassnNm" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZHRV_CL_ORGEH_VH4Type" sap:label="조직도 최총코드 ValueHelp" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Orgeh"/>
+                    <PropertyRef Name="OrgehNm"/>
+                </Key>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="조직코드"/>
+                <Property Name="OrgehNm" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="조직명"/>
+                <Property Name="Orgeh1Nm" Type="Edm.String" MaxLength="30" sap:label="조직명(1차)"/>
+                <Property Name="Orgeh2Nm" Type="Edm.String" MaxLength="30" sap:label="조직명(2차)"/>
+                <Property Name="Orgeh3Nm" Type="Edm.String" MaxLength="30" sap:label="조직명(3차)"/>
+            </EntityType>
+            <EntityType Name="EmployeeType" sap:label="발령정보 Projection List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename" sap:label="사원번호"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:text="Emgrdnm" sap:label="직급" sap:value-list="fixed-values"/>
+                <Property Name="Emgrdnm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Empos" Type="Edm.String" MaxLength="2" sap:text="Emposnm" sap:label="직위"/>
+                <Property Name="Emposnm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Emgrp" Type="Edm.String" MaxLength="2" sap:text="Emgrpnm" sap:label="직책"/>
+                <Property Name="Emgrpnm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Empstatus" Type="Edm.String" MaxLength="1" sap:text="Empstatusnm" sap:label="재직상태"/>
+                <Property Name="Empstatusnm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:text="Orgehnm" sap:label="소속" sap:value-list="standard"/>
+                <Property Name="Orgehnm" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Orgeh1nm" Type="Edm.String" MaxLength="30" sap:label="소속명(1차)"/>
+                <Property Name="Orgeh2nm" Type="Edm.String" MaxLength="30" sap:label="소속명(2차)"/>
+                <Property Name="Orgeh3nm" Type="Edm.String" MaxLength="30" sap:label="소속명(3차)"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="to_Action" Relationship="cds_zhrs_li_action.assoc_21D6F855412230262A3910DF9B3981EB" FromRole="FromRole_assoc_21D6F855412230262A3910DF9B3981EB" ToRole="ToRole_assoc_21D6F855412230262A3910DF9B3981EB"/>
+            </EntityType>
+            <EntityType Name="ActionType" sap:label="발령정보 발령 Projection List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Begda"/>
+                    <PropertyRef Name="Endda"/>
+                    <PropertyRef Name="Massn"/>
+                </Key>
+                <Property Name="Begda_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endda_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Massn_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Ename" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="Begda_fc" sap:label="발령일자"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="Endda_fc"/>
+                <Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="3" sap:field-control="Massn_fc" sap:text="MassnNm" sap:value-list="fixed-values"/>
+                <Property Name="Massg" Type="Edm.String" MaxLength="3" sap:text="MassgNm" sap:value-list="standard"/>
+                <Property Name="MassnNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="MassgNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Emgrd" Type="Edm.String" MaxLength="2" sap:text="EmgrdNm" sap:value-list="fixed-values"/>
+                <Property Name="EmgrdNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Empos" Type="Edm.String" MaxLength="2" sap:text="EmposNm" sap:value-list="fixed-values"/>
+                <Property Name="EmposNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Emgrp" Type="Edm.String" MaxLength="2" sap:text="EmgrpNm" sap:value-list="fixed-values"/>
+                <Property Name="EmgrpNm" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:value-list="standard"/>
+                <Property Name="OrgehAll" Type="Edm.String" MaxLength="92" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Aedtm" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on"/>
+                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="255" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="30" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Employee" Relationship="cds_zhrs_li_action.assoc_4B64EF194DC7D38C641183035ED09E44" FromRole="FromRole_assoc_4B64EF194DC7D38C641183035ED09E44" ToRole="ToRole_assoc_4B64EF194DC7D38C641183035ED09E44"/>
+            </EntityType>
+            <Association Name="assoc_21D6F855412230262A3910DF9B3981EB" sap:content-version="1">
+                <End Type="cds_zhrs_li_action.EmployeeType" Multiplicity="1" Role="FromRole_assoc_21D6F855412230262A3910DF9B3981EB">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zhrs_li_action.ActionType" Multiplicity="*" Role="ToRole_assoc_21D6F855412230262A3910DF9B3981EB"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_21D6F855412230262A3910DF9B3981EB">
+                        <PropertyRef Name="Pernr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_21D6F855412230262A3910DF9B3981EB">
+                        <PropertyRef Name="Pernr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_4B64EF194DC7D38C641183035ED09E44" sap:content-version="1">
+                <End Type="cds_zhrs_li_action.ActionType" Multiplicity="1" Role="FromRole_assoc_4B64EF194DC7D38C641183035ED09E44"/>
+                <End Type="cds_zhrs_li_action.EmployeeType" Multiplicity="1" Role="ToRole_assoc_4B64EF194DC7D38C641183035ED09E44"/>
+            </Association>
+            <EntityContainer Name="cds_zhrs_li_action_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZHRV_CL_EMGRD_VH" EntityType="cds_zhrs_li_action.ZHRV_CL_EMGRD_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_EMGRP_VH" EntityType="cds_zhrs_li_action.ZHRV_CL_EMGRP_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_EMPOS_VH" EntityType="cds_zhrs_li_action.ZHRV_CL_EMPOS_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_MASSG_VH" EntityType="cds_zhrs_li_action.ZHRV_CL_MASSG_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_MASSN_VH" EntityType="cds_zhrs_li_action.ZHRV_CL_MASSN_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZHRV_CL_ORGEH_VH4" EntityType="cds_zhrs_li_action.ZHRV_CL_ORGEH_VH4Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Employee" EntityType="cds_zhrs_li_action.EmployeeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Action" EntityType="cds_zhrs_li_action.ActionType" sap:content-version="1"/>
+                <AssociationSet Name="assoc_21D6F855412230262A3910DF9B3981EB" Association="cds_zhrs_li_action.assoc_21D6F855412230262A3910DF9B3981EB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Employee" Role="FromRole_assoc_21D6F855412230262A3910DF9B3981EB"/>
+                    <End EntitySet="Action" Role="ToRole_assoc_21D6F855412230262A3910DF9B3981EB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_4B64EF194DC7D38C641183035ED09E44" Association="cds_zhrs_li_action.assoc_4B64EF194DC7D38C641183035ED09E44" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Action" Role="FromRole_assoc_4B64EF194DC7D38C641183035ED09E44"/>
+                    <End EntitySet="Employee" Role="ToRole_assoc_4B64EF194DC7D38C641183035ED09E44"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zhrs_li_action.EmployeeType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.EmployeeType/Orgeh" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="조직도 최총코드 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_ORGEH_VH4"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Orgeh"/>
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrgehNm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh1Nm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh2Nm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh3Nm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.ActionType/Massn" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="발령코드 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_MASSN_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Massn"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MassnNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.ActionType/Massg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="발령사유 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_MASSG_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Massn"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Massg"/>
+                                    <PropertyValue Property="ValueListProperty" String="Massg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MassgNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.ActionType/Emgrd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직급 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrdNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.ActionType/Empos" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직위 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMPOS_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Empos"/>
+                                    <PropertyValue Property="ValueListProperty" String="Empos"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmposNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.ActionType/Emgrp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="직책 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_EMGRP_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Emgrp"/>
+                                    <PropertyValue Property="ValueListProperty" String="Emgrp"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmgrpNm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.ActionType/Orgeh" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="조직도 최총코드 ValueHelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZHRV_CL_ORGEH_VH4"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Orgeh"/>
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrgehNm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh1Nm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh2Nm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Orgeh3Nm"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.cds_zhrs_li_action_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.cds_zhrs_li_action_Entities/Action" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Begda_fc</PropertyPath>
+                                <PropertyPath>Endda_fc</PropertyPath>
+                                <PropertyPath>Massn_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Begda_fc</PropertyPath>
+                                <PropertyPath>Endda_fc</PropertyPath>
+                                <PropertyPath>Massn_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zhrs_li_action.cds_zhrs_li_action_Entities/Employee" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Action"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZHRS_LI_ACTION/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vhcala4hci:50000/sap/opu/odata/sap/ZHRS_LI_ACTION/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

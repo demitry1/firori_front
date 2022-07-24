@@ -1421,6 +1421,166 @@
          "env": {
             "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
          }
+      },
+      {
+         "name": "Start action_manage",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/action_manage",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#actionmanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start action_manage Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/action_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#actionmanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start action_manage Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/action_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#actionmanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start quota_manage",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceFolder}/quota_manage",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--open",
+            "test/flpSandbox.html#quotamanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "DEBUG": "--inspect",
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start quota_manage Mock",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/quota_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-mock.yaml",
+            "--open",
+            "test/flpSandbox.html#quotamanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
+      },
+      {
+         "name": "Start quota_manage Local",
+         "type": "node",
+         "request": "launch",
+         "cwd": "${workspaceFolder}/quota_manage",
+         "runtimeExecutable": "npx",
+         "windows": {
+            "runtimeExecutable": "npx.cmd"
+         },
+         "runtimeArgs": [
+            "fiori",
+            "run"
+         ],
+         "args": [
+            "--config",
+            "./ui5-local.yaml",
+            "--open",
+            "test/flpSandbox.html#quotamanage-tile"
+         ],
+         "console": "internalConsole",
+         "internalConsoleOptions": "openOnSessionStart",
+         "outputCapture": "std",
+         "port": 9229,
+         "env": {
+            "FIORI_TOOLS_URL_PARAMS": "sap-client=001&sap-ui-xx-viewCache=false"
+         }
       }
    ],
    "compounds": [],
